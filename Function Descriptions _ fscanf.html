@@ -1,0 +1,500 @@
+
+<!-- saved from url=(0080)http://support.sas.com/documentation/onlinedoc/sasc/doc700/html/lr1/z2055208.htm -->
+<html><!-- This page produced Wed Apr 18 10:26:23 EDT 2001
+ --><!-- Used program version 1.25 from gpp --><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<!-- <META http-equiv="Content-Type" content="text/html; charset="> -->
+<title>Function Descriptions : fscanf </title></head>
+<body bgcolor="#FFFFFF">
+<!-- navigation -->
+<table cellpadding="0" cellspacing="0">
+<tbody><tr valign="top">
+<td align="center">
+<a href="http://support.sas.com/documentation/onlinedoc/sasc/doc700/html/lr1/chap6.htm">
+<img border="0" src="./Function Descriptions _ fscanf_files/cont1.gif"><br><font size="-2">Chapter Contents</font></a></td>
+<td align="center">
+<a href="http://support.sas.com/documentation/onlinedoc/sasc/doc700/html/lr1/z2055201.htm">
+<img border="0" src="./Function Descriptions _ fscanf_files/prev1.gif"><br><font size="-2">Previous</font></a></td>
+<td align="center">
+<a href="http://support.sas.com/documentation/onlinedoc/sasc/doc700/html/lr1/z2055217.htm">
+<img border="0" src="./Function Descriptions _ fscanf_files/next1.gif"><br><font size="-2">Next</font></a></td>
+</tr></tbody></table>
+<!-- running head -->
+<table width="100%" cellpadding="4">
+<tbody><tr valign="MIDDLE">
+<td bgcolor="#CCCC99"><i><font size="2">fscanf</font></i></td>
+</tr>
+</tbody></table>
+<h1><font size="5"><a name="z2055208">fscanf</a></font></h1>
+<p>
+</p><hr><br><b>Read Formatted Input from a File</b>
+<p>
+
+<table cellpadding="4" cellspacing="2">
+<tbody><tr valign="top">
+<td align="right" bgcolor="#F5F5F5" nowrap=""><b>Portability:</b></td>
+<td bgcolor="#CCCCCC" align="left">ISO/ANSI C conforming, UNIX compatible
+</td></tr>
+</tbody></table></p><hr>
+<table cellspacing="0" cellpadding="1">
+<tbody><tr>
+<td colspan="2"><a href="http://support.sas.com/documentation/onlinedoc/sasc/doc700/html/lr1/z2055208.htm#z2055209"><font size="2"><b>SYNOPSIS</b></font></a></td></tr>
+<tr>
+<td colspan="2"><a href="http://support.sas.com/documentation/onlinedoc/sasc/doc700/html/lr1/z2055208.htm#z2055210"><font size="2"><b>DESCRIPTION</b></font></a></td></tr>
+<tr>
+<td colspan="2"><a href="http://support.sas.com/documentation/onlinedoc/sasc/doc700/html/lr1/z2055208.htm#z2055211"><font size="2"><b>RETURN VALUE</b></font></a></td></tr>
+<tr>
+<td colspan="2"><a href="http://support.sas.com/documentation/onlinedoc/sasc/doc700/html/lr1/z2055208.htm#z2055212"><font size="2"><b>DIAGNOSTICS</b></font></a></td></tr>
+<tr>
+<td colspan="2"><a href="http://support.sas.com/documentation/onlinedoc/sasc/doc700/html/lr1/z2055208.htm#z2055213"><font size="2"><b>IMPLEMENTATION</b></font></a></td></tr>
+<tr>
+<td colspan="2"><a href="http://support.sas.com/documentation/onlinedoc/sasc/doc700/html/lr1/z2055208.htm#z2055214"><font size="2"><b>EXAMPLE</b></font></a></td></tr>
+<tr>
+<td colspan="2"><a href="http://support.sas.com/documentation/onlinedoc/sasc/doc700/html/lr1/z2055208.htm#z2055215"><font size="2"><b>RELATED FUNCTIONS</b></font></a></td></tr>
+<tr>
+<td colspan="2"><a href="http://support.sas.com/documentation/onlinedoc/sasc/doc700/html/lr1/z2055208.htm#z2055216"><font size="2"><b>SEE ALSO</b></font></a></td></tr></tbody></table>
+<p><table width="100%" cellpadding="0" cellspacing="0">
+<tbody><tr valign="bottom"><td><hr></td></tr>
+<tr valign="top"><td><b><font size="5"><a name="z2055209">SYNOPSIS</a></font></b></td></tr></tbody></table>
+</p><p>
+<a name="z2026042">
+
+</a>
+
+</p><pre><a name="zid-5748">#include &lt;stdio.h&gt;
+
+int fscanf(FILE *f, const char *format, loc1, loc2, ...);</a></pre>
+<p>
+</p><p><table width="100%" cellpadding="0" cellspacing="0">
+<tbody><tr valign="bottom"><td><hr></td></tr>
+<tr valign="top"><td><b><font size="5"><a name="z2055210">DESCRIPTION</a></font></b></td></tr></tbody></table>
+</p><p>
+<a name="z2026043"></a>
+<code><b><a name="zid-5749">fscanf</a></b></code>
+
+reads formatted input from the 
+<code><b><a name="zid-5750">FILE</a></b></code>
+ designated
+by 
+<code><b><a name="zid-5751">f</a></b></code>
+ according to the format specified
+by the string 
+<code><b><a name="zid-5752">format</a></b></code>
+. Following the format
+in the argument list may be one or more additional pointers (
+<code><b><a name="zid-5753">loc1, loc2,..., locn</a></b></code>
+), addressing storage where the input values are
+stored.
+</p><p><a name="z2026044"></a>
+<code><b><a name="zid-5754">format</a></b></code>
+ points to
+a string that contains zero or more of the following:
+</p><p>
+</p><ul>
+
+<li><a name="z2026045">white-space characters</a>
+<p>
+
+</p></li><li><a name="z2026046">regular characters (not including
+%)</a>
+<p>
+
+</p></li><li><a name="z2026047">conversion specifications.</a>
+<p>
+</p></li></ul>
+<p>
+</p><p><a name="z2026048">The format string contains format specifiers or characters
+to be matched from the input.  Format items have the following form:
+
+</a>
+
+</p><pre><a name="zid-5755">%[*][ {OB} width {OBE} ][h | l | L | hh | z | t | ll | j]form</a></pre>
+<p>
+</p><p><a name="z2026049">The specifiers have the following meanings:</a>
+</p><p>
+</p><ul>
+
+<li><a name="z2026050">An asterisk (*) indicates that an input item is
+processed according to the format, but its value is not stored.</a>
+<p>
+
+</p></li><li><a name="z2026051">If a value for </a>
+<code><b><a name="zid-5756">width</a></b></code>
+ is present, 
+<code><b><a name="zid-5757">width</a></b></code>
+ specifies the
+maximum width of the input item.
+<p>
+
+</p></li><li><a name="z2026052">An optional letter has the following meanings: </a>
+<p>
+</p><ul>
+
+<li><a name="z2026053">An
+<b><code>hh</code></b> before a <b><code>d</code></b>, <b><code>i</code></b>, or <b><code>n</code></b>
+conversion specifier indicates that the corresponding argument is a pointer
+to <b><code>char</code></b> instead of <b><code>int</code></b>.</a>
+<p>
+
+</p></li><li><a name="z2026054">An <b><code>h</code></b> before a
+<b><code>d</code></b>, <b><code>i</code></b>, or <b><code>n</code></b>
+conversion specifier indicates that the corresponding argument is a pointer
+to <b><code>short int</code></b> instead of <b><code>int</code></b>.</a>
+<p>
+
+</p></li><li><a name="z2026055">An <b><code>l</code></b>,
+<b><code>z</code></b>, or <b><code>t</code></b> before a <b><code>d</code></b>, <b><code>i</code></b>, or <b><code>n</code></b>
+conversion specifier indicates that the corresponding argument is a pointer
+to <b><code>long int</code></b> instead of <b><code>int</code></b>.</a>
+<p>
+
+</p></li><li><a name="z2026056">An <b><code>ll</code></b>, or
+<b><code>j</code></b> before a <b><code>d</code></b>, <b><code>i</code></b>, or <b><code>n</code></b> conversion specifier
+indicates that the corresponding argument is a pointer to <b><code>long long int</code></b> instead of <b><code>int</code></b>.</a>
+<p>
+
+</p></li><li><a name="z2026057">An
+<b><code>hh</code></b> before an <b><code>o</code></b>, <b><code>u</code></b>, or <b><code>x</code></b>
+conversion specifier indicates that the corresponding argument is a pointer
+to <b><code>unsigned char</code></b> instead of <b><code>unsigned int</code></b>.</a>
+<p>
+
+</p></li><li><a name="z2026058">An <b><code>h</code></b> before an
+<b><code>o</code></b>, <b><code>u</code></b>, or <b><code>x</code></b>
+conversion specifier indicates that the corresponding argument is a pointer
+to <b><code>unsigned short int</code></b> instead of <b><code>unsigned int</code></b>.</a>
+<p>
+
+</p></li><li><a name="z2026059">An <b><code>l</code></b>,
+<b><code>z</code></b>, or <b><code>t</code></b> before an <b><code>o</code></b>, <b><code>u</code></b>, or <b><code>x</code></b>
+conversion specifier indicates that the corresponding argument is a pointer
+to <b><code>unsigned long in</code></b>t instead of <b><code>unsigned int</code></b>.</a>
+<p>
+
+</p></li><li><a name="z2026060">An <b><code>ll</code></b>, or
+<b><code>j</code></b> before an <b><code>o</code></b>, <b><code>u</code></b>, or <b><code>x</code></b> conversion specifier
+indicates that the corresponding argument is a pointer to <b><code>unsigned long long int</code></b> instead of <b><code>unsigned
+int</code></b></a>
+<p>
+
+</p></li><li><a name="z2026061">An <b><code>l</code></b> before an <b><code>e</code></b>, <b><code>f</code></b>, or
+<b><code>g</code></b>
+conversion specifier indicates that the corresponding argument is a pointer
+to <b><code>double</code></b> instead of <b><code>float</code></b>.</a>
+<p>
+
+</p></li><li><a name="z2026062">An <b><code>L</code></b> before an
+<b><code>e</code></b>, <b><code>f</code></b>, or <b><code>g</code></b>
+conversion specifier indicates that the corresponding argument is a pointer
+to <b><code>long double</code></b> instead of <b><code>float</code></b>.</a>
+<p>
+</p></li></ul>
+<p>
+</p><p>
+
+</p></li><li><a name="z2026063"></a>
+<code><b><a name="zid-5758">form</a></b></code>
+ is one
+of the following characters, defining the type of the corresponding target
+object and the expected format of the input:
+<table cellpadding="5" cellspacing="0">
+<tbody><tr align="left" valign="top">
+<td><a name="z2026064"></a>
+<code><b><a name="zid-5759">c</a></b></code>
+</td>
+<td align="left"><a name="z2026065">matches a sequence of characters
+specified by width.  If no width is specified, one character is expected.
+ A null character is not added. The corresponding argument should point to
+an array large enough to hold the sequence.</a></td></tr>
+
+<tr align="left" valign="top">
+<td><a name="z2026066"></a>
+<code><b><a name="zid-5760">d</a></b></code>
+</td>
+<td align="left"><a name="z2026067">matches an optionally signed decimal
+integer whose format is the same as expected for the subject sequence of </a>
+<code><b><a name="zid-5761">strtol</a></b></code>
+ with 
+<code><b><a name="zid-5762">base=10</a></b></code>
+.  The corresponding argument should be 
+<code><b><a name="zid-5763">int *</a></b></code>
+.</td></tr>
+
+<tr align="left" valign="top">
+<td><a name="z2026068"></a>
+<code><b><a name="zid-5764">e</a></b></code>
+, 
+<code><b><a name="zid-5765">E</a></b></code>
+, 
+<code><b><a name="zid-5766">f</a></b></code>
+, 
+<code><b><a name="zid-5767">g</a></b></code>
+, or 
+<code><b><a name="zid-5768">G</a></b></code>
+</td>
+<td align="left"><a name="z2026069">matches a floating-point number.
+ The corresponding argument should be </a>
+<code><b><a name="zid-5769">float *</a></b></code>
+.</td></tr>
+
+<tr align="left" valign="top">
+<td><a name="z2026070"></a>
+<code><b><a name="zid-5770">i</a></b></code>
+</td>
+<td align="left"><a name="z2026071">matches an optionally signed decimal
+integer, which may be expressed in decimal, in octal with a leading 0, or
+in hexadecimal with a leading 0x.  The corresponding argument should be </a>
+<code><b><a name="zid-5771">int *</a></b></code>
+.</td></tr>
+
+<tr align="left" valign="top">
+<td><a name="z2026072"></a>
+<code><b><a name="zid-5772">n</a></b></code>
+</td>
+<td align="left"><a name="z2026073">indicates that no input is consumed.
+ The number of characters read from the input stream so far by this call to </a>
+<code><b><a name="zid-5773">fscanf</a></b></code>
+ is stored in the object addressed by the
+corresponding 
+<code><b><a name="zid-5774">int *</a></b></code>
+ argument.</td></tr>
+
+<tr align="left" valign="top">
+<td><a name="z2026074"></a>
+<code><b><a name="zid-5775">o</a></b></code>
+</td>
+<td align="left"><a name="z2026075">matches an optionally signed octal
+integer.  The corresponding argument should be </a>
+<code><b><a name="zid-5776">unsigned int *</a></b></code>
+.</td></tr>
+
+<tr align="left" valign="top">
+<td><a name="z2026076"></a>
+<code><b><a name="zid-5777">p</a></b></code>
+</td>
+<td align="left"><a name="z2026077">matches a pointer in the format written
+by the </a>
+<code><b><a name="zid-5778">%p printf</a></b></code>
+ format. This implementation
+treats 
+<code><b><a name="zid-5779">%p</a></b></code>
+ like 
+<code><b><a name="zid-5780">%x</a></b></code>
+.  The corresponding argument should be 
+<code><b><a name="zid-5781">void **</a></b></code>
+.</td></tr>
+
+<tr align="left" valign="top">
+<td><a name="z2026078"></a>
+<code><b><a name="zid-5782">s</a></b></code>
+</td>
+<td align="left"><a name="z2026079">matches a sequence of nonwhite-space
+characters.  A terminating null character is automatically added.  The corresponding
+argument should point to an array large enough to hold the sequence plus the
+terminating null character.</a></td></tr>
+
+<tr align="left" valign="top">
+<td><a name="z2026080"></a>
+<code><b><a name="zid-5783">u</a></b></code>
+</td>
+<td align="left"><a name="z2026081">matches an optionally signed integer.
+ The corresponding argument should be </a>
+<code><b><a name="zid-5784">unsigned
+int *</a></b></code>
+.</td></tr>
+
+<tr align="left" valign="top">
+<td><a name="z2026082"></a>
+<code><b><a name="zid-5785">x</a></b></code>
+, 
+<code><b><a name="zid-5786">X</a></b></code>
+</td>
+<td align="left"><a name="z2026083">matches a hexadecimal integer.  The
+corresponding argument should be </a>
+<code><b><a name="zid-5787">unsigned int
+*</a></b></code>
+.</td></tr>
+
+<tr align="left" valign="top">
+<td><a name="z2026084">[  ] or &lt;   &gt;</a></td>
+<td align="left"><a name="z2026085">matches a string comprised of a particular
+set of characters.  A terminating-null character is automatically added. 
+The corresponding argument should point to an array large enough to hold the
+sequence plus the terminating-null character. Note that you cannot use the
+two-character sequences (| and |) to replace the brackets in a </a>
+<code><b><a name="zid-5788">fscanf</a></b></code>
+ format.</td></tr>
+</tbody></table>
+
+<p>
+</p></li></ul>
+<p>
+</p><p><a name="z2026086">The format string is a C string.  With
+the exception
+of the </a>
+<code><b><a name="zid-5789">c</a></b></code>
+ and 
+<code><b><a name="zid-5790">[</a></b></code>
+ or 
+<code><b><a name="zid-5791">&lt;</a></b></code>
+ specifiers, white-space
+characters in the format string cause white-space characters in the input
+to be skipped. Characters other than format specifiers are expected to match
+the next nonwhite-space character in the input.  The input is scanned through
+white space to locate the next input item in all cases except the 
+<code><b><a name="zid-5792">c</a></b></code>
+ and 
+<code><b><a name="zid-5793">[  ]</a></b></code>
+ specifiers, where the
+initial scan is bypassed.  The 
+<code><b><a name="zid-5794">s</a></b></code>
+ specifier
+terminates on any white space.
+</p><p><a name="z2026087">The </a>
+<code><b><a name="zid-5795">fscanf</a></b></code>
+ formats
+are described in more detail in the ISO/ANSI C standard. As an extension,
+uppercase characters may also be used for the format characters specified
+in lowercase in the previous list.
+</p><p><table width="100%" cellpadding="0" cellspacing="0">
+<tbody><tr valign="bottom"><td><hr></td></tr>
+<tr valign="top"><td><b><font size="5"><a name="z2055211">RETURN VALUE</a></font></b></td></tr></tbody></table>
+</p><p>
+<a name="z2026088"></a>
+<code><b><a name="zid-5796">fscanf</a></b></code>
+
+returns 
+<code><b><a name="zid-5797">EOF</a></b></code>
+ if end of file (or an input
+error) occurs before any values are stored.  If values are stored, it returns
+the number of items stored; that is, the number of times a value is assigned
+with one of the 
+<code><b><a name="zid-5798">fscanf</a></b></code>
+ argument pointers.
+</p><p><table width="100%" cellpadding="0" cellspacing="0">
+<tbody><tr valign="bottom"><td><hr></td></tr>
+<tr valign="top"><td><b><font size="5"><a name="z2055212">DIAGNOSTICS</a></font></b></td></tr></tbody></table>
+</p><p>
+<a name="z2026089"></a>
+<code><b><a name="zid-5799">EOF</a></b></code>
+
+is returned if an error occurs before any items are matched.
+</p><p><table width="100%" cellpadding="0" cellspacing="0">
+<tbody><tr valign="bottom"><td><hr></td></tr>
+<tr valign="top"><td><b><font size="5"><a name="z2055213">IMPLEMENTATION</a></font></b></td></tr></tbody></table>
+</p><p>
+<a name="z2026090">The format string can also contain multibyte
+characters.  For details on how </a>
+<code><b><a name="zid-5800">fscanf</a></b></code>
+
+treats multibyte characters in the format string and in conversions, see Chapter
+11 in the 
+<b>SAS/C Library Reference, Volume 2</b>.
+</p><p><a name="z2026091">Because square brackets do not exist on some 370 I/O
+devices, the library allows the format </a>
+<code><b><a name="zid-5801">%[xyz]</a></b></code>
+ to be replaced by the alternate form 
+<code><b><a name="zid-5802">%&lt;xyz&gt;</a></b></code>
+. This is not a portable format.
+</p><p><table width="100%" cellpadding="0" cellspacing="0">
+<tbody><tr valign="bottom"><td><hr></td></tr>
+<tr valign="top"><td><b><font size="5"><a name="z2055214">EXAMPLE</a></font></b></td></tr></tbody></table>
+</p><p>
+<a name="z2026092">This example writes out the data stored
+in lines to a temporary file, and reads them back with </a>
+<code><b><a name="zid-5803">fscanf</a></b></code>
+:
+
+
+
+</p><pre><a name="zid-5804">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+static char *lines[] = {
+   "147.8 pounds\n"
+   "51.7 miles\n",
+   "4.3 light-years\n",
+   "10000 volts\n",
+   "19.5 gallons\n"
+};
+
+main()
+{
+   FILE *tmpf;
+   int i;
+   float amount;
+   char unit[20];
+   int count;
+
+   tmpf = tmpfile();
+   if (!tmpf){
+         puts("Couldn't open temporary file.");
+         exit(EXIT_FAILURE);
+   }
+
+   for (i = 0; i &lt; sizeof(lines)/sizeof(char *); ++i){
+      fputs(lines[i], tmpf);
+   }
+   rewind(tmpf);
+   for(;;){
+      count = fscanf(tmpf, "%f %s", &amp;amount, unit);
+      if (feof(tmpf)) break;
+      if (count &lt; 2){
+         puts("Unexpected error in input data.");
+         exit(EXIT_FAILURE);
+      }
+         printf("amount = %f, units = \"%s\"\n", amount, unit);
+   }
+   fclose(tmpf);
+}</a></pre>
+<p>
+</p><p><table width="100%" cellpadding="0" cellspacing="0">
+<tbody><tr valign="bottom"><td><hr></td></tr>
+<tr valign="top"><td><b><font size="5"><a name="z2055215">RELATED FUNCTIONS</a></font></b></td></tr></tbody></table>
+</p><p>
+<a name="z2026093"></a>
+<code><b><a name="zid-5805">fprintf</a></b></code>
+, 
+<code><b><a name="zid-5806">scanf</a></b></code>
+, 
+<code><b><a name="zid-5807">sscanf</a></b></code>
+
+</p><p><table width="100%" cellpadding="0" cellspacing="0">
+<tbody><tr valign="bottom"><td><hr></td></tr>
+<tr valign="top"><td><b><font size="5"><a name="z2055216">SEE ALSO</a></font></b></td></tr></tbody></table>
+</p><p>
+<a name="z2026094"></a>
+</p><p>
+</p><ul>
+
+<li><a name="z2026095"></a><a href="http://support.sas.com/documentation/onlinedoc/sasc/doc700/html/lr1/chap3.htm">I/O Functions</a>
+<p>
+
+</p></li><li><a name="z2026096"></a><a href="http://support.sas.com/documentation/onlinedoc/sasc/doc700/html/lr1/zoutfunc.htm">I/O Functions</a>
+<p>
+</p></li></ul>
+<p>
+
+</p><p><!-- navigation -->
+</p><p><table cellpadding="0" cellspacing="0">
+<tbody><tr valign="top">
+<td align="center">
+<a href="http://support.sas.com/documentation/onlinedoc/sasc/doc700/html/lr1/chap6.htm">
+<img border="0" src="./Function Descriptions _ fscanf_files/cont1.gif"><br><font size="-2">Chapter Contents</font></a></td>
+<td align="center">
+<a href="http://support.sas.com/documentation/onlinedoc/sasc/doc700/html/lr1/z2055201.htm">
+<img border="0" src="./Function Descriptions _ fscanf_files/prev1.gif"><br><font size="-2">Previous</font></a></td>
+<td align="center">
+<a href="http://support.sas.com/documentation/onlinedoc/sasc/doc700/html/lr1/z2055217.htm">
+<img border="0" src="./Function Descriptions _ fscanf_files/next1.gif"><br><font size="-2">Next</font></a></td>
+<td align="center">
+<a href="http://support.sas.com/documentation/onlinedoc/sasc/doc700/html/lr1/z2055208.htm#z2055208">
+<img border="0" src="./Function Descriptions _ fscanf_files/top1.gif"><br><font size="-2">Top of Page</font></a></td>
+</tr></tbody></table>
+
+
+</p><p><a href="http://support.sas.com/documentation/onlinedoc/sasc/doc700/index.htm"><img src="./Function Descriptions _ fscanf_files/button.books.gif"></a>
+</p><p><font size="1"><a href="http://support.sas.com/documentation/onlinedoc/sasc/doc700/html/common/images/copyrite.htm">Copyright © 2001
+ by SAS Institute Inc., Cary, NC, USA. All rights reserved.</a></font>
+
+
+</p></body></html>
